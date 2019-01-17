@@ -33,9 +33,6 @@ var addProblem = function (newProblem) {
                 reject("Problem name already exists");
             } else {
                 ProblemModel.count({}, function (err, num) {
-                    console.log(newProblem.name);
-                    console.log(newProblem.desc);
-                    console.log(newProblem.difficulty);
                     newProblem.id = num + 1;
                     var mongoProblem = new ProblemModel(newProblem);
                     mongoProblem.save();

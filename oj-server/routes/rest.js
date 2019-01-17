@@ -11,7 +11,7 @@ router.get("/problems", function (req, res){
 
 router.get("/problems/:id", function (req, res) {
     var id = req.params.id;
-    problemService.getProblems(+id)
+    problemService.getProblem(+id)
         .then(problem => res.json(problem));
 });
 
@@ -20,7 +20,6 @@ router.post("/problems", jsonParser, function (req, res) {
         .then(function(problem) {
             res.json(problem);
         }, function(error) {
-            console.log(error);
             res.status(400).send("Problem name already exists!");
         });
 });
