@@ -12,6 +12,11 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use('/', indexRouter);
 app.use("/api/v1", restRouter);
 
+app.use(function(req, res) {
+    // send index.html to start client side
+    res.sendFile("index.html", { root: path.join(__dirname, '../public/') });
+});
+
 app.get('/', function (req, res){
     res.send('Hello Express World!')
 })
